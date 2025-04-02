@@ -121,7 +121,7 @@ Bear in mind that the setup function runs in first place, as it is the sector wh
 
 - Hardware Needed: Any SAMD21 Based Arduino Boards (MKR Family)
 
-Following example demonstrates how a board wakes up every 10 seconds unless it detected an external event on a desired pin. 
+The following example demonstrates how a board wakes up every 10 seconds unless it detects an external event on a desired pin. 
 
 ```arduino
 #include "ArduinoLowPower.h"
@@ -147,9 +147,9 @@ void callback() {
 }
 ```
 
-Here requires to define `LowPower.attachInterruptWakeup(pin, callback, mode)` function with pin of the device to be handled, the design the task inside the callback, and the mode to define the transition to sense change on the defined pin. The mode can be defined within 3 different settings: FALLING, RISING, and CHANGE. 
+Here requires to define `LowPower.attachInterruptWakeup(pin, callback, mode)` function with pin of the device to be handled, the design the task inside the callback, and the mode to define the transition to sense change on the defined pin. The mode can be defined as one of these: FALLING, RISING, and CHANGE. 
 
-Falling mode means when the signal on the defined pin sense is in negative trend; Rising mode is when the signal is in positive trend; and Change mode is either trends whenever the defined pin senses any type of shift. For `pinMode(pin, mode)`, the modes are `INPUT`, `OUTPUT`, or `INPUT_PULLUP`. A defined external event based low power example can be seen as follows. This example can be found by navigating to **Examples -> Arduino Low Power -> ExternalWakeup**.
+Falling mode means when the signal on the defined pin sense is has a negative trend; Rising mode is when the signal has a positive trend; and Change mode is either trends whenever the defined pin senses any type of shift. For `pinMode(pin, mode)`, the modes are `INPUT`, `OUTPUT`, or `INPUT_PULLUP`. A defined external event based low power example can be seen as follows. This example can be found by navigating to **Examples -> Arduino Low Power -> ExternalWakeup**.
 
 ```arduino
 #include "ArduinoLowPower.h"
@@ -193,7 +193,7 @@ void repetitionsIncrease() {
 
 - Hardware Needed: Any SAMD21 Based Arduino Boards (MKR Family)
 
-Modifying a bit of the previous external event based low power example, it is possible to configure ADC (Analog to Digital Converter) as a wake up source given a defined range of voltage detection reading. This example can be found by navigating to **Examples -> Arduino Low Power -> AdcWakeup**.
+By modifying a bit of the previous external event based low power example, it is possible to configure the ADC (Analog to Digital Converter) as a wake up source given a defined range of voltage detection reading. This example can be found by navigating to **Examples -> Arduino Low Power -> AdcWakeup**.
 
 ```arduino
 #include "ArduinoLowPower.h"
@@ -266,7 +266,7 @@ After the device wakes up within configured ADC (Analog to Digital Converter) in
 LowPower.detachAdcInterrupt();
 ```
 
-Callback functions are to be used when the system wakes up from sleep state via configured interruption. In this function, and as an entire software architecture, usually it is a good practice to avoid using delay() and long running functions. This is to avoid what is called **Blocking Operation** and to be designed in **Non-Blocking Operation** fashion, which very helpful for this types of design cases. In this instances, this will help design power efficient system in parallel being a responsive system. 
+Callback functions are to be used when the system wakes up from sleep state via a configured interrupt. In this function, and as an entire software architecture, usually it is a good practice to avoid using delay() and long running functions. This is to avoid what is called **Blocking Operation** and to be designed in **Non-Blocking Operation** fashion, which very helpful for this types of design cases. In this instances, this will help design power efficient system in parallel being a responsive system. 
 
 ### Low Power Example Using LoRa® Technology Transmitter
 
